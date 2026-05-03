@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+:root {
+    color-scheme: light dark;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --base: light-dark(#FAF9F6, #1a1a1a);
+    --base-secondary: light-dark(#d9d9d9, #515151);
+    --text-primary: #1a1a1a;
+    --text-primary-dk: #fefefe;
+    --bg-primary: #2A9D8F;
+    --bg-secondary: #F4A261;
+    --bg-tersier: #264653;
+    --bg-error: #ee2222;
+    --bg-success: #16a200;
+}
+
+
+#base {
+    background-color: var(--base);
+    width: auto;
+    ;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0 5vw;
+    padding: 1rem 1.5rem;
+}
+
+h1{
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: var(--base-secondary);
+    border-radius: 0 0 5px 5px;
+    align-items: center;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+
+    h1 {
+        font-size: 20pt;
+        font-weight: 600;
+    }
+
+    #btn-group {
+        width: 20%;
+        display: flex;
+        justify-content: space-around;
+        :hover,
+        :active {
+            background-color: light-dark(#b4b4b4, #171717);
+            cursor: pointer;
+        }
+    }
+}
+input, select{
+    background-color: light-dark(#ededed,var(--text-primary-dk));
+    color: black;
+    width: max-content;
+}
+
+button, input, select {
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    margin: 0 10px;
+    transition: all .12s ease-in-out;
+}
+
+#card{
+    width: 16rem;
+    height: 20rem;
+    background-color: var(--base-secondary);
+    display: grid;
+    text-align: center;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+
+    figure{
+        border-radius: 10px;
+        object-fit: cover;
+        overflow: hidden;
+        height: 8rem;
+        img{
+            width: 16rem;
+            min-height: 8rem;
+
+            &:hover{
+                transform: scale(1.2);
+                transition: all 1.5s ease-in-out;
+            }
+        }
+    }
+    p{
+        font-size: 12pt;
+        font-weight: 600;
+    }
+    h2{
+        font-size: 16pt;
+        font-weight: 700;
+    }
+    .btn-group{
+        display: flex;
+    }
+    button{
+        margin-top: 1rem;
+    }
+
+}
