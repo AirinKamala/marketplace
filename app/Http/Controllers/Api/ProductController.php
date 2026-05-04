@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
@@ -37,6 +39,16 @@ class ProductController extends Controller
     {
     $product = Product::findOrFail($id);
     return response()->json($product);
+    }
+
+    public function showCategory(Category $category): JsonResponse
+    {
+        $products = $category->products()->paginate(10);
+        return response()->json([
+            'success' => true,
+            'products'=> $products,
+            'category' => $category
+        ]);
     }
 
     /**

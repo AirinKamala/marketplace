@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('productName');
-            $table->string('slug');
-            $table->string('categoryId')->default('P001');
+            $table->string('slug')->unique();
+            $table->foreignId('categoryId')->constrained()->onDelete('cascade');
             $table->integer('price');
             $table->integer('stock');
             $table->timestampsTz();

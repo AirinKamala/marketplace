@@ -24,6 +24,7 @@
 <body>
     <x-navbar></x-navbar>
     <x-layout>
+        <h1>Categori product: {{ $product->categoryId }}</h1>
         <section id="actionBar">
             <a href="{{ route('product.create') }}"><button id="btn-create">Create product</button></a>
             <div class="flex justify-between">
@@ -48,7 +49,6 @@
                 <x-card :product="$product" />
             @endforeach
         </div>
-        {{ $products->links() }}
     </x-layout>
 
 

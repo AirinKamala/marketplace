@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Cache\RetrievesMultipleKeys;
 use Illuminate\Http\Request;
 use Illumimate\Http\Response;
@@ -15,9 +16,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $query = Product::with('categories');
+        $products = $query->filter(request(['search']))->latest()->paginate(8);
+        $products->withPath('/');
         return view("home", compact("products"));
         // return response()->json((['products' => $products]));
     }
@@ -40,8 +43,8 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::findOrFail($id);
-        // return view('test', compact('product'));
-        return response()->json($product);
+        return view('test', compact('product'));
+        // return response()->json($product);
     }
 
     /**
